@@ -20,10 +20,10 @@ Setelah Ubuntu Server di-_install_ di dalam Virtual Machine (VirtualBox), kita p
 2. NGINX dapat di-_install_ dengan mengetik `sudo apt -y install nginx`.
 3. NGINX sudah terpasang di Ubuntu Server. Untuk mengecek apakah NGINX sudah berjalan atau belum, ketikkan `sudo systemctl status nginx`. Apabila berhasil, tampilan Ubuntu Server akan seperti berikut :
 
-![NGINX: Status Berhasil](../nginx-status.png)
+![NGINX: Status Berhasil](nginx-status.png)
 
 4. Untuk menjalankan NGINX pada Web Browser, ketikkan alamat IP pada URl. Alamat IP Server dapat diketahui dengan mengetik `ip a`. Tampilan Web Browser apabila NGINX berhasil berjalan seperti berikut :
 
-![NGINX: Tampilan Web](../nginx-web.png)
+![NGINX: Tampilan Web](nginx-web.png)
 
 ## 3. _Install_ Docker di Ubuntu Server
