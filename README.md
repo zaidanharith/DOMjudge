@@ -136,9 +136,9 @@ Video oleh : [Steve's Tech Stuff](https://www.youtube.com/@StevesTechStuff)
 
 9. Docker telah di-_install_ di Ubuntu Server. Untuk mengecek apakah Docker sudah berjalan, gunakan _command_
 
-```
-sudo systemctl status docker
-```
+   ```
+   sudo systemctl status docker
+   ```
 
 ## 5. Instalasi Domserver di Ubuntu Server dengan Docker dan NGINX
 
