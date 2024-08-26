@@ -269,8 +269,8 @@ Untuk meng-_install_ Domserver menggunakan Docker dan NGINX, ikuti langkah berik
 
 12. Buat _file_ dengan nama `docker-compose.yml` dengan _command_
 
-    ```sudo nano docker-compose.yml
-
+    ```
+    sudo nano docker-compose.yml
     ```
 
     _File_ tersebut boleh berada di folder _root_ ataupun yang lain. Namun, disarankan untuk membuat folder baru saja karena apabila kalian ingin membuat program lain dengan Docker, tidak perlu mengganti _file_ `docker-compose.yml` tersebut. Untuk membuat folder baru, kalian bisa menggunakan _command_
