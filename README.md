@@ -1,8 +1,6 @@
 # Cara Install Domjudge dengan Docker, NGINX, dan Ubuntu Server
 
-Created by : [Zaidan Harith](https://github.com/zaidanharith)
-
-Instagram : [@zaidanharith\_](https://instagram.com/zaidanharith_)
+Created by : [Zaidan Harith](https://instagram.com/zaidanharith_)
 
 Berikut langkah-langkah untuk meng-_install_ Domjudge dengan menggunakan Docker, NGINX, dan Ubuntu Server.
 
