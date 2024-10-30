@@ -48,7 +48,7 @@ Setelah Ubuntu Server di-_install_ di dalam Virtual Machine (VirtualBox), kita p
 
 6. Tampilan Web Browser apabila NGINX berhasil berjalan seperti berikut :
 
-![NGINX: Tampilan Web](nginx-web.png)
+   ![NGINX: Tampilan Web](nginx-web.png)
 
 ## 3. Menghubungkan Ubuntu Server ke Terminal OS dengan SSH
 
@@ -309,84 +309,84 @@ Untuk meng-_install_ Domserver menggunakan Docker dan NGINX, ikuti langkah berik
                    - MYSQL_DATABASE=domjudge
               command: --max-connections=1000
 
-    domserver:
-         container_name: domserver
-         image: domjudge/domserver:latest
-         volumes:
-              - /sys/fs/cgroup:/sys/fs/cgroup:ro
-         networks:
-              - domjudge
-         ports:
-              - 12345:80
-         depends_on:
-              - mariadb
-         environment:
-              - CONTAINER_TIMEZONE=Asia/Jakarta
-              - MYSQL_HOST=mariadb
-              - MYSQL_ROOT_PASSWORD=rootpw
-              - MYSQL_USER=domjudge
-              - MYSQL_PASSWORD=djpw
-              - MYSQL_DATABASE=domjudge
+          domserver:
+               container_name: domserver
+               image: domjudge/domserver:latest
+               volumes:
+                    - /sys/fs/cgroup:/sys/fs/cgroup:ro
+               networks:
+                    - domjudge
+               ports:
+                    - 12345:80
+               depends_on:
+                    - mariadb
+               environment:
+                    - CONTAINER_TIMEZONE=Asia/Jakarta
+                    - MYSQL_HOST=mariadb
+                    - MYSQL_ROOT_PASSWORD=rootpw
+                    - MYSQL_USER=domjudge
+                    - MYSQL_PASSWORD=djpw
+                    - MYSQL_DATABASE=domjudge
 
-    judgehost-0:
-         container_name: judgehost-0
-         image: domjudge/judgehost:latest
-         privileged: true
-         hostname: judgedaemon-0
-         volumes:
-              - /sys/fs/cgroup:/sys/fs/cgroup:ro
-         networks:
-              - domjudge
-         depends_on:
-              - domserver
-         environment:
-              - DAEMON_ID=0
-              - JUDGEDAEMON_PASSWORD=mVg2GIgM0tsujQwYuJlqu4NZ2K76hr7r
+          judgehost-0:
+               container_name: judgehost-0
+               image: domjudge/judgehost:latest
+               privileged: true
+               hostname: judgedaemon-0
+               volumes:
+                    - /sys/fs/cgroup:/sys/fs/cgroup:ro
+               networks:
+                    - domjudge
+               depends_on:
+                    - domserver
+               environment:
+                    - DAEMON_ID=0
+                    - JUDGEDAEMON_PASSWORD=mVg2GIgM0tsujQwYuJlqu4NZ2K76hr7r
 
-    judgehost-1:
-         container_name: judgehost-1
-         image: domjudge/judgehost:latest
-         privileged: true
-         hostname: judgedaemon-1
-         volumes:
-              - /sys/fs/cgroup:/sys/fs/cgroup:ro
-         networks:
-              - domjudge
-         depends_on:
-              - domserver
-         environment:
-              - DAEMON_ID=1
-              - JUDGEDAEMON_PASSWORD=mVg2GIgM0tsujQwYuJlqu4NZ2K76hr7r
+          judgehost-1:
+               container_name: judgehost-1
+               image: domjudge/judgehost:latest
+               privileged: true
+               hostname: judgedaemon-1
+               volumes:
+                    - /sys/fs/cgroup:/sys/fs/cgroup:ro
+               networks:
+                    - domjudge
+               depends_on:
+                    - domserver
+               environment:
+                    - DAEMON_ID=1
+                    - JUDGEDAEMON_PASSWORD=mVg2GIgM0tsujQwYuJlqu4NZ2K76hr7r
 
-    judgehost-2:
-         container_name: judgehost-2
-         image: domjudge/judgehost:latest
-         privileged: true
-         hostname: judgedaemon-2
-         volumes:
-              - /sys/fs/cgroup:/sys/fs/cgroup:ro
-         networks:
-              - domjudge
-         depends_on:
-              - domserver
-         environment:
-              - DAEMON_ID=2
-              - JUDGEDAEMON_PASSWORD=mVg2GIgM0tsujQwYuJlqu4NZ2K76hr7r
+          judgehost-2:
+               container_name: judgehost-2
+               image: domjudge/judgehost:latest
+               privileged: true
+               hostname: judgedaemon-2
+               volumes:
+                    - /sys/fs/cgroup:/sys/fs/cgroup:ro
+               networks:
+                    - domjudge
+               depends_on:
+                    - domserver
+               environment:
+                    - DAEMON_ID=2
+                    - JUDGEDAEMON_PASSWORD=mVg2GIgM0tsujQwYuJlqu4NZ2K76hr7r
 
-    judgehost-3:
-         container_name: judgehost-3
-         image: domjudge/judgehost:latest
-         privileged: true
-         hostname: judgedaemon-3
-         volumes:
-              - /sys/fs/cgroup:/sys/fs/cgroup:ro
-         networks:
-              - domjudge
-         depends_on:
-              - domserver
-         environment:
-              - DAEMON_ID=3
-              - JUDGEDAEMON_PASSWORD=mVg2GIgM0tsujQwYuJlqu4NZ2K76hr7r
+          judgehost-3:
+               container_name: judgehost-3
+               image: domjudge/judgehost:latest
+               privileged: true
+               hostname: judgedaemon-3
+               volumes:
+                    - /sys/fs/cgroup:/sys/fs/cgroup:ro
+               networks:
+                    - domjudge
+               depends_on:
+                    - domserver
+               environment:
+                    - DAEMON_ID=3
+                    - JUDGEDAEMON_PASSWORD=mVg2GIgM0tsujQwYuJlqu4NZ2K76hr7r
     ```
 
 14. Di folder yang sama dengan _file_ `docker-compose.yml` tersebut, aktifkan MariaDB dan Domserver dengan menggunakan command
