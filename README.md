@@ -251,13 +251,19 @@ Untuk meng-_install_ Domserver menggunakan Docker dan NGINX, ikuti langkah berik
 
 9. Simpan dan keluar dari _file_ tersebut dengan _shorthand_ `ctrl+s` dan `ctrl+x`.
 
-10. _Reboot_ Ubuntu Server dengan menggunakan _command_
+10. Lakukan _update_ untuk _grub_ tersebut dengan menggunakan _command_
+
+    ```
+    sudo update-grub
+    ```
+
+11. _Reboot_ Ubuntu Server dengan menggunakan _command_
 
     ```
     sudo reboot
     ```
 
-11. Setelah di-_reboot_, Ubuntu Server akan dimulai ulang, sehingga jika kalian menggunakan terminal di sistem operasi, maka sambungan SSH dengan Ubuntu Server akan terputus. Jika proses _reboot_ sudah selesai, kalian bisa kembali menyambungkan Ubuntu Server ke terminal kalian dengan menggunakan _command_
+12. Setelah di-_reboot_, Ubuntu Server akan dimulai ulang, sehingga jika kalian menggunakan terminal di sistem operasi, maka sambungan SSH dengan Ubuntu Server akan terputus. Jika proses _reboot_ sudah selesai, kalian bisa kembali menyambungkan Ubuntu Server ke terminal kalian dengan menggunakan _command_
 
     ```
     ssh [Username Ubuntu Server]@[Alamat IP]
@@ -265,7 +271,7 @@ Untuk meng-_install_ Domserver menggunakan Docker dan NGINX, ikuti langkah berik
 
     di terminal kalian (persis sama dengan yang sudah kita lakukan sebelumnya saat meng-_install_ SSH).
 
-12. Buat _file_ dengan nama `docker-compose.yml` dengan _command_
+13. Buat _file_ dengan nama `docker-compose.yml` dengan _command_
 
     ```
     sudo nano docker-compose.yml
@@ -283,7 +289,7 @@ Untuk meng-_install_ Domserver menggunakan Docker dan NGINX, ikuti langkah berik
     cd [Nama File]
     ```
 
-13. Isikan _file_ `docker-compose.yml` dengan kode berikut :
+14. Isikan _file_ `docker-compose.yml` dengan kode berikut :
 
     (_Copy-Paste_ atau _Drag and Drop_ kodenya saja)
 
@@ -291,11 +297,11 @@ Untuk meng-_install_ Domserver menggunakan Docker dan NGINX, ikuti langkah berik
     version: '3.9'
 
     networks:
-         domjudge:
+          domjudge:
               name: domjudge
 
     services:
-         mariadb:
+          mariadb:
               container_name: mariadb
               image: mariadb:latest
               networks:
@@ -389,28 +395,34 @@ Untuk meng-_install_ Domserver menggunakan Docker dan NGINX, ikuti langkah berik
                     - JUDGEDAEMON_PASSWORD=mVg2GIgM0tsujQwYuJlqu4NZ2K76hr7r
     ```
 
-14. Di folder yang sama dengan _file_ `docker-compose.yml` tersebut, aktifkan MariaDB dan Domserver dengan menggunakan command
+15. Di folder yang sama dengan _file_ `docker-compose.yml` tersebut, aktifkan MariaDB dan Domserver dengan menggunakan command
 
     ```
-    docker-compose up -d mariadb domserver
+    sudo docker compose up -d mariadb domserver
     ```
 
-15. Pada _file_ `docker-compose.yml`, di setiap bagian `judgehost` (di _file_ tersebut, jumlahnya ada 4), ada bagian yang bertuliskan `JUDGEDAEMON_PASSWORD=mVg2GIgM0tsujQwYuJlqu4NZ2K76hr7r`. Ganti `mVg2GIgM0tsujQwYuJlqu4NZ2K76hr7r` dengan Password Judgedaemon kalian. Password dapat dilihat dengan menggunakan _command_
+16. Pada _file_ `docker-compose.yml`, di setiap bagian `judgehost` (di _file_ tersebut, jumlahnya ada 4), ada bagian yang bertuliskan `JUDGEDAEMON_PASSWORD=mVg2GIgM0tsujQwYuJlqu4NZ2K76hr7r`. Ganti `mVg2GIgM0tsujQwYuJlqu4NZ2K76hr7r` dengan Password Judgedaemon kalian. Password dapat dilihat dengan menggunakan _command_
 
     ```
-    docker exec -it domserver cat /opt/domjudge/domserver/etc/restapi.secret
+    sudo docker exec -it domserver cat /opt/domjudge/domserver/etc/restapi.secret
     ```
 
     Sebagai contoh, `JUDGEDAEMON_PASSWORD=ai3nuJlqu4NZX7pU8HNTyvG`.
 
     > ! Ingat lagi bagaimana cara membuka _file_ di Ubuntu Server
 
-16. Setelah Password Judgedaemon diganti, jalankan Judgehost dengan menggunakan _command_
+17. Setelah Password Judgedaemon diganti, jalankan Judgehost dengan menggunakan _command_
 
     ```
-    docker-compose up -d
+    sudo docker compose up -d
     ```
 
-17. Untuk menjalankan Domjudge, kalian bisa masuk menggunakan alamat IP kalian di dalam Web Browser kalian.
+18. Untuk menjalankan Domjudge, kalian bisa masuk menggunakan alamat IP kalian di dalam Web Browser kalian.
 
-18. Selamat! Kalian sudah berhasil membuat Domjudge dengan menggunakan Docker, NGINX dan Ubuntu Server.
+19. Halaman Domjudge akan tampil dan kalian bisa login sebagai admin dengan menggunakan _username_ `admin`. Untuk _password_, dapat didapatkan dengan menggunakan _command_
+
+    ```
+    sudo docker exec -it domserver cat /opt/domjudge/domserver/etc/initial_admin_password.secret
+    ```
+
+20. Selamat! Kalian sudah berhasil membuat Domjudge dengan menggunakan Docker, NGINX dan Ubuntu Server.
